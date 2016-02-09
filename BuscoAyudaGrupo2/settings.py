@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'BuscoAyudaGrupo2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dbam1qvo8k53i4',
         'USER': 'oszhmhpkymswer',
-        'PASSWORD': ' TiI7wjhScfQ3knwLL5fUojsQTD',
+        'PASSWORD': 'TiI7wjhScfQ3knwLL5fUojsQTD',
         'HOST': 'ec2-54-225-223-40.compute-1.amazonaws.com',
         'PORT': '5432',
     }
