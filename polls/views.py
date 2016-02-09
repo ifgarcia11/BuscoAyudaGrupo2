@@ -6,7 +6,7 @@ from .models import tiposDeServicio
 def servicios (request):
     tiposDeServicios = tiposDeServicio.objects.all()
     context = {'tiposDeServicios':tiposDeServicios}
-    return  render(request, 'polls/templates/tiposDeServicios.html', context)
+    return  render(request, 'tiposDeServicios.html', context)
 
 def index(request):
     # return HttpResponse('Hello from Python!')
