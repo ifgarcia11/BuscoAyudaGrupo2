@@ -19,5 +19,5 @@ from django.conf.urls import include, url
 import polls.urls
 urlpatterns = [
     url(r'^polls/', include(polls.urls, namespace='trabajadores')),
-    url(r'^polls/admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
 ]
