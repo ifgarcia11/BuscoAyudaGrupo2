@@ -1,10 +1,11 @@
 from django.conf.urls import patterns,url
 
 from polls import views
+from django.contrib import admin
+admin.autodiscover()
+import polls.views
+
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-        url(r'^tiposDeServicios/$', views.servicios, name='tiposDeServicios')
-
-
+    url(r'^$', polls.views.index, name='index'),
 ]

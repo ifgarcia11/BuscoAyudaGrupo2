@@ -3,7 +3,6 @@ from .models import trabajador
 from .models import tiposDeServicio
 
 # Create your views here.
-
 def servicios (request):
     tiposDeServicios = tiposDeServicio.objects.all()
     context = {'tiposDeServicios':tiposDeServicios}
@@ -11,4 +10,6 @@ def servicios (request):
 
 def index(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'index.html')
+    trabajadores = trabajador.objects.all()
+    context = {'trabajadores':trabajadores}
+    return render(request, 'index.html',context)
