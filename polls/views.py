@@ -6,9 +6,9 @@ from .models import tiposDeServicio
 def index (request):
     trabajadores = trabajador.objects.all()
     context = {'trabajadores':trabajadores}
-    return  render(request,'polls/index.html',context)
+    return  render(request, 'polls/templates/index.html', context)
 
 def servicios (request):
     tiposDeServicios = tiposDeServicio.objects.all()
     context = {'tiposDeServicios':tiposDeServicios}
-    return  render(request,'polls/tiposDeServicios.html',context)
+    return  render(request, 'polls/templates/tiposDeServicios.html', context)
