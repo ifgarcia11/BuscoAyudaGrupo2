@@ -39,8 +39,14 @@
                             <li><a href="admin"><i class="fa fa-user-secret"> administrar</i></a></li>
                         </ul>
                     </li>
-                    <li><a href="login"><i class="fa fa-sign-in"> Login</i></a></li>
-                    <li><a href="registro"><i class="fa fa-user-secret"> Registro</i></a></li>
+                     {% if user.is_authenticated %}
+                           <li><a href="../logout"><i class="fa fa-sign-in"> cerrar Sesión</i></a></li>
+                         <li><a href=""><i class="fa fa-user-plus"> {{ user.username }}</i></a></li>
+
+                       {% else %}
+                       <li><a href="../login"><i class="fa fa-sign-in"> Login</i></a></li>
+                         <li><a href="registro"><i class="fa fa-user-secret"> Registro</i></a></li>
+                      {% endif %}
 
 
                 </ul>
