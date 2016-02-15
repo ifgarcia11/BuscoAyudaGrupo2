@@ -39,27 +39,21 @@
                             <li><a href="admin"><i class="fa fa-user-secret"> administrar</i></a></li>
                         </ul>
                     </li>
-                    <li><a href="login"><i class="fa fa-sign-in"> Login</i></a></li>
-                    <li><a href="registro"><i class="fa fa-user-secret"> Registro</i></a></li>
-
-
                 </ul>
             </div>
         </div>
     </nav>
-    {% for trabajador in trabajadores %}
-      <div class="col-sm-4 col-md-3">
-        <div class="thumbnail">
-          <img src= "{{ trabajador.imagen}}" style="min-width: 200px; min-height: 300px;">
-          <div class="caption">
-            <h3>{{trabajador.nombre}} {{ trabajador.apellidos}}</h3>
-            <p>Teléfono: {{trabajador.telefono}}</p>
-              <p>Servicio: {{trabajador.tiposDeServicio.nombre}}</p>
-              <p>Experiencia: {{trabajador.aniosExperiencia}} años</p>
-            <p><a href="#" class="btn btn-primary" role="button">Ver información</a> <a href="#" class="btn btn-default" role="button">Contactar</a></p>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
+  {% block content %}
+        {% if form.errors %}
+            <p class ="error"> usuario o contrasena inválidos</p>
+        {%  endif%}
+     <form action="../auth/" method="post">{% csrf_token %}
+      <label for="usuario">usuario: </label>
+    <input id="usuario" type="text" name="usuario" value="">
+          <label for="contrasenia">contrasenia: </label>
+    <input id="contrasenia" type="text" name="contrasenia" value="">
+    <input type="submit" value="login"/>
+    </form>
+    {% endblock %}
 </body>
 </html>
