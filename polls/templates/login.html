@@ -22,12 +22,12 @@
   <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href=""><img alt="Busco Ayuda"></a>
+                <a class="navbar-brand" href="../"><img alt="Busco Ayuda"></a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href=""><i class="fa fa-list"> Independientes</i></a></li>
-                    <li><a href="tiposDeServicios"><i class="fa fa-cogs"> Servicios</i></a></li>
+                    <li class="active"><a href="../"><i class="fa fa-list"> Independientes</i></a></li>
+                    <li><a href="../tiposDeServicios"><i class="fa fa-cogs"> Servicios</i></a></li>
                     <li><a href=""><i class="fa fa-comment"> Comentarios</i></a></li>
 
                 </ul>
@@ -36,7 +36,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user">Administrador</i>
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin"><i class="fa fa-user-secret"> administrar</i></a></li>
+                            <li><a href="../admin"><i class="fa fa-user-secret"> administrar</i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -47,11 +47,15 @@
         {% if form.errors %}
             <p class ="error"> usuario o contrasena inválidos</p>
         {%  endif%}
-     <form action="../auth/" method="post">{% csrf_token %}
+     <form action="../auth/" method="post" class="form-inline" role="form">{% csrf_token %}
+          <div class="form-group">
       <label for="usuario">usuario: </label>
     <input id="usuario" type="text" name="usuario" value="">
+             </div>
+          <div class="form-group">
           <label for="contrasenia">contrasenia: </label>
-    <input id="contrasenia" type="text" name="contrasenia" value="">
+    <input id="contrasenia" type="password"  name="contrasenia" value="">
+              </div>
     <input type="submit" value="login"/>
     </form>
     {% endblock %}

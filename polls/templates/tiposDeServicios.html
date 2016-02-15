@@ -43,6 +43,7 @@
 
 					</ul>
                        {% if user.is_authenticated %}
+                           <li><a href="../login"><i class="fa fa-sign-in"> {user.email }}</i></a></li>
 
                        {% else %}
                        <li><a href="../login"><i class="fa fa-sign-in"> Login</i></a></li>

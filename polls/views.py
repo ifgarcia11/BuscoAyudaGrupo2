@@ -78,3 +78,6 @@ def auth_view (request):
         auth.login(request,user)
         return render(request, 'registro_exitoso.html')
 
+def logout (request):
+    auth.logout(request)
+    return render(request, 'logout.html')

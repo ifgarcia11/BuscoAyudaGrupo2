@@ -12,6 +12,6 @@ urlpatterns = [
                    url(r'^registro_exitoso/$',polls.views.registroExitoso, name='registro_exitoso'),
                         url(r'^login/$',polls.views.login, name='login'),
                              url(r'^auth/$',polls.views.auth_view),
-
+                             url(r'^logout/$',polls.views.logout),
 
 ]
