@@ -45,13 +45,20 @@
             </div>
         </div>
     </nav>
-    {% block content %}
-     <form action="/registro/" method="post">{% csrf_token %}
-      <ul>
-    {{ form.as_ul }}
-    <input type="submit" value="Register"/>
-    </ul>
-    </form>
-    {% endblock %}
+  <h1>Registrate</h1>
+        {% if registered %}
+         <strong>Gracias por registrarte!</strong>
+        <a href="">Volver.</a><br />
+        {% else %}
+          <form role="form" id="user_form" method="post" action="/registro/"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="field-title">
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                </div>
+                <input type="submit" name="submit" value="Register" />
+          </form>
+        {% endif %}
 </body>
 </html>
