@@ -142,3 +142,6 @@ def register(request):
             'registro.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
+
+def detalle(request):
+    return render(request, 'detalle.html')
