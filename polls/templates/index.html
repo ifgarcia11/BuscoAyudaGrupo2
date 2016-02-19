@@ -41,7 +41,7 @@
                     </li>
                      {% if user.is_authenticated %}
                            <li><a href="../logout"><i class="fa fa-sign-in"> cerrar Sesión</i></a></li>
-                         <li><a href=""><i class="fa fa-user-plus"> {{ user.username }}</i></a></li>
+                         <li><a href="perfil"><i class="fa fa-user-plus"> {{ user.username }}</i></a></li>
 
                        {% else %}
                        <li><a href="../login"><i class="fa fa-sign-in"> Login</i></a></li>

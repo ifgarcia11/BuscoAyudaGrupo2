@@ -106,10 +106,10 @@ def register(request):
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
-
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
+
             user.save()
 
             # Now sort out the UserProfile instance.
@@ -145,3 +145,8 @@ def register(request):
 
 def detalle(request):
     return render(request, 'detalle.html')
+
+def perfil(request):
+    usuarios = UserProfile.objects.all()
+    context = {'usuarios':usuarios}
+    return render(request, 'perfil.html',context)
