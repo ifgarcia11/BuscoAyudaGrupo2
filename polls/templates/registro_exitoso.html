@@ -41,13 +41,18 @@
                     </li>
                          {% if user.is_authenticated %}
                            <li><a href="../logout"><i class="fa fa-sign-in"> cerrar Sesión</i></a></li>
-                         <li><a href=""><i class="fa fa-user-plus"> {{ user.username }}</i></a></li>
+                         <li><a href="../perfil"><i class="fa fa-user-plus"> {{ user.username }}</i></a></li>
                        {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
+    {% if user.is_authenticated %}
         <h2> Te has autenticado en el sistema de manera exitosa!</h2>
+      {% else %}
+        <h2> Contraseña o Email inválidos!</h2>
+    {% endif %}
+
 </body>
 </html>
 

@@ -82,6 +82,9 @@ def auth_view (request):
     if user is not None:
         auth.login(request,user)
         return render(request, 'registro_exitoso.html')
+    else:
+      return render(request, 'registro_exitoso.html')
+
 
 def logout (request):
     auth.logout(request)
