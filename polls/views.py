@@ -147,7 +147,9 @@ def register(request):
             context)
 
 def detalle(request):
-    return render(request, 'detalle.html')
+    usuarios = UserProfile.objects.all()
+    context = {'usuarios':usuarios}
+    return render(request, 'detalle.html',context)
 
 def perfil(request):
     usuarios = UserProfile.objects.all()
