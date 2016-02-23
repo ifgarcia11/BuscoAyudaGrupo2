@@ -3,25 +3,27 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, render_to_response
 from django.template import RequestContext
 
-from .models import trabajador,UserProfile
+from .models import trabajador, UserProfile
 from .models import tiposDeServicio
 from .models import TrabajadorForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
-from django.core.context_processors import csrf
+from django.template.context_processors import csrf
 from .models import UserForm, UserProfileForm
 
+
 # Create your views here.
-def servicios (request):
+def servicios(request):
     tiposDeServicios = tiposDeServicio.objects.all()
-    context = {'tiposDeServicios':tiposDeServicios}
-    return  render(request, 'tiposDeServicios.html', context)
+    context = {'tiposDeServicios': tiposDeServicios}
+    return render(request, 'tiposDeServicios.html', context)
+
 
 def index(request):
     # return HttpResponse('Hello from Python!')
     trabajadores = UserProfile.objects.all()
-    context = {'trabajadores':trabajadores}
-    return render(request, 'index.html',context)
+    context = {'trabajadores': trabajadores}
+    return render(request, 'index.html', context)
 
 
 def add_userView(request):
@@ -36,23 +38,21 @@ def add_userView(request):
             contrasenia = cleaned_data.get('contrasenia')
 
             User_Model = User.objects.create_user(username=usuario, password=contrasenia)
-            User_Model.username=usuario
-            User_Model.first_name=nombre
-            User_Model.last_name=apellidos
-            User_Model.email =correo
+            User_Model.username = usuario
+            User_Model.first_name = nombre
+            User_Model.last_name = apellidos
+            User_Model.email = correo
             User_Model.save()
             trab = trabajador()
-            trab.nombre=nombre
-            trab.apellidos=apellidos
+            trab.nombre = nombre
+            trab.apellidos = apellidos
             trab.save()
             return HttpResponseRedirect('/registro_exitoso')
-
 
     args = {}
     args.update(csrf(request))
     args['form'] = UserCreationForm()
-    return render_to_response('registro.html',args)
-
+    return render_to_response('registro.html', args)
 
 
 def registerUser(request):
@@ -65,30 +65,34 @@ def registerUser(request):
     args = {}
     args.update(csrf(request))
     args['form'] = UserCreationForm()
-    return render_to_response('registro.html',args)
+    return render_to_response('registro.html', args)
+
 
 def registroExitoso(request):
     return render(request, 'registro_exitoso.html')
 
-def login (request):
+
+def login(request):
     login = {}
     login.update(csrf(request))
-    return  render_to_response('login.html', login)
+    return render_to_response('login.html', login)
 
-def auth_view (request):
-    username= request.POST.get('usuario' , '')
-    password= request.POST.get('contrasenia' , '')
+
+def auth_view(request):
+    username = request.POST.get('usrname', '')
+    password = request.POST.get('psw', '')
     user = auth.authenticate(username=username, password=password)
     if user is not None:
-        auth.login(request,user)
-        return render(request, 'registro_exitoso.html')
+        auth.login(request, user)
+        return render_to_response('index.html', { 'auth': True })
     else:
-      return render(request, 'registro_exitoso.html')
+        return render_to_response('index.html', { 'auth': True })
 
 
-def logout (request):
+def logout(request):
     auth.logout(request)
     return render(request, 'logout.html')
+
 
 def register(request):
     # Like before, get the request's context.
@@ -121,7 +125,6 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile.user = user
 
-
             # Now we save the UserProfile model instance.
             profile.save()
 
@@ -142,16 +145,18 @@ def register(request):
 
     # Render the template depending on the context.
     return render_to_response(
-            'registro.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
-            context)
+        'registro.html',
+        {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+        context)
+
 
 def detalle(request):
     usuarios = UserProfile.objects.all()
-    context = {'usuarios':usuarios}
-    return render(request, 'detalle.html',context)
+    context = {'usuarios': usuarios}
+    return render(request, 'detalle.html', context)
+
 
 def perfil(request):
     usuarios = UserProfile.objects.all()
-    context = {'usuarios':usuarios}
-    return render(request, 'perfil.html',context)
+    context = {'usuarios': usuarios}
+    return render(request, 'perfil.html', context)
