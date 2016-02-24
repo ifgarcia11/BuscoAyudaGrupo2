@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "BuscoAyudaGrupo2.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "busco_ayuda_grupo2.settings")
 
 application = get_wsgi_application()

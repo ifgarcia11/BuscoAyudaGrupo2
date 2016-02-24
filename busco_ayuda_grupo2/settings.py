@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'BuscoAyudaGrupo2.urls'
+ROOT_URLCONF = 'busco_ayuda_grupo2.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BuscoAyudaGrupo2.wsgi.application'
+WSGI_APPLICATION = 'busco_ayuda_grupo2.wsgi.application'
 
 
 # Database
@@ -80,9 +80,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dbam1qvo8k53i4',
-        'USER': 'oszhmhpkymswer',
-        'PASSWORD': 'TiI7wjhScfQ3knwLL5fUojsQTD',
-        'HOST': 'ec2-54-225-223-40.compute-1.amazonaws.com',
+        #'USER': 'oszhmhpkymswer',
+        'USER': 'postgres',
+        #'PASSWORD': 'TiI7wjhScfQ3knwLL5fUojsQTD',
+        'PASSWORD': 'izote',
+        #'HOST': 'ec2-54-225-223-40.compute-1.amazonaws.com',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }

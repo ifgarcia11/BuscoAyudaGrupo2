@@ -1,23 +1,81 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Busco Ayuda</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Administrador</a></li>
+        {% else %}
+            <li><a href="perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+        {% endif %}
+        <li><a href="../logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    {% else %}
+        <li><a href="registro"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+        <li class="dropdown">
+            <a href="../login" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-log-in"></span>
+                Login
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a id="id_login">Independiente</a></li>
+                <li><a href="../admin">Administrador</a></li>
+            </ul>
+        </li>
+    {% endif %}
+</ul>
+<div class="jumbotron" style="padding-left: 20px; height: 50%">
+    <h1>Busco Ayuda</h1>
+    <p>Encuentra aquí la ayuda que necesitas.</p>
+</div>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">Independientes</a></li>
+    <li><a href="tiposDeServicios">Servicios</a></li>
+</ul>
+<div class="container" style="padding: 5px">
+    {% if auth %}
+        Autenticado
+    {% else %}
+        No autenticado
+    {% endif %}
+
+</div>
+{% include "login.html" %}
+<script>
+    $(document).ready(function () {
+        $("#id_login").click(function () {
+            $("#login_modal").modal();
+        });
+    });
+</script>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
 <html>
     <head>
         <title>Busco Ayuda</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-        <!-- Libraries -->
+        <!-- Libraries
         <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="https://code.angularjs.org/1.4.3/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
     </head>
   <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -68,4 +126,4 @@
       </div>
     {% endfor %}
 </body>
-</html>
+</html>-->
